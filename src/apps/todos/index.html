@@ -40,15 +40,25 @@
     </div>
   </nav>
   	  
-      <script>
+      
 
+       <h2>Tasks</h2>
+        <ul class="collection" id="tasks">
+        </ul>
+
+      <script>
         // create a firebase reference to the root
-        var ref = new Firebase('https://weekone.firebaseio.com/')
+        var ref = new Firebase('https://sigrunnsky.firebaseio.com/')
 
         // read data from the location todos/tasks, only once
          ref.child('todos/tasks').on('value', function(snapshot){
  +          $('#tasks').empty()
             var tasks = snapshot
+            
+            var key = task.key();
+            var deadline = task.child("deadline").val();
+            var priority = task.child("priority").val();
+            var type = task.child("type").val();
             tasks.forEach(function(task){
               var key = task.key();
       </script>
