@@ -24,8 +24,8 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li class="active"><a href="low.html">Low</a></li>
-        <li><a href="Medium.html">Medium</a></li>
-        <li><a href="High.html">High</a></li>
+        <li><a href="medium.html">Medium</a></li>
+        <li><a href="high.html">High</a></li>
       </ul>
     </div>
   </nav>
@@ -49,10 +49,13 @@
             var deadline = task.child("deadline").val();
             var priority = task.child("priority").val();
             var type = task.child("type").val();
-            if(priority =="low"){
-          $('#tasks').append('<li class="collection-item">' + key + '<br>'+ "deadline: "+ deadline+ '<br>' + "type: " + type +'</li>')}
+            if(priority =='low'){
+            $('#tasks').append('<li class="collection-item">' + '<div class="card blue-grey darken-1">' + '<div class="card-content white-text">' + '<span class="card-title">' + key + '</span>' + '<br>'+ "deadline: "+ deadline+ '<br>' + "type: " + type +'</li>' + '</div>' + '</div>')
+            }
           })
         })
       </script>
     </body>
   </html>
+
+      
