@@ -9,20 +9,7 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-       <style>
-        .collection .collection-item{
-          background-color: #72AEC2;
-	  border-bottom:12px solid #fff;
-	  font-weight: bold;
-
-          }
-	.collection{
-	  border: white;
-	}
-	.card-title{
-		font-weight: bold;
-	}
-      </style>
+      
     </head>
 
     <body>
@@ -34,7 +21,7 @@
 
       <nav>
       <div class="nav-wrapper">
-         <a href="#" class="brand-logo">Rice and Curry ToDo</a>
+         <a href="index.html" class="brand-logo">Rice and Curry ToDo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="low.html">Low</a></li>
@@ -56,14 +43,14 @@
         // read data from the location todos/tasks, only once
         ref.child('todos/tasks').on('value', function(snapshot){
           $('#tasks').empty()
-          var tasks = snapshot
+           var tasks = snapshot
             tasks.forEach(function(task){
             
             var key = task.key();
             var deadline = task.child("deadline").val();
             var priority = task.child("priority").val();
             var type = task.child("type").val();
-            if(priority =="high"){
+            if(priority == "high"){
           $('#tasks').append('<li class="collection-item">' + '<span class="card-title">' + key + '</span>' + '<br>'+ "deadline: "+ deadline+ '<br>' + "type: " + type +'</li>')
           }
           })
