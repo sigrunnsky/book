@@ -36,17 +36,17 @@
         var ref = new Firebase('https://sigrunnsky.firebaseio.com/')
 
         // read data from the location bio/favorite_foods
-        ref.child('bio/programming').once('value', function(snapshot){
-          var foodsg = snapshot.val()
-          foodsg.forEach(function(programming){
-            $('#foodsg').append('<li class="collection-item">' + programming + '</li>')
+        ref.child('programming').once('value', function(snapshot){
+          var programming = snapshot.val()
+          programming.forEach(function(pl){
+            $('#programming').append('<li class="collection-item">' + pl + '</li>');
           })
         })
 
-        ref.child('bio/Hobbies').once('value', function(snapshot){
-          var Hobbiess = snapshot.val()
-          Hobbiess.forEach(function(Hobbies){
-            $('#Hobbiess').append('<li class="collection-item">' + Hobbies + '</li>')
+        ref.child('Hobbies').once('value', function(snapshot){
+          var Hobbies = snapshot.val()
+          Hobbies.forEach(function(hobbie){
+            $('#Hobbies').append('<li class="collection-item">' + hobbie + '</li>');
           })
         })
 
