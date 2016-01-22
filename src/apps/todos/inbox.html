@@ -16,6 +16,20 @@
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
       <div class="container">
+        <h>My Team's ToDos App</h>
+        <nav>
+              <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo">Rice and Curry ToDo</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="low.html">Low</a></li>
+              <li><a href="medium.html">Medium</a></li>
+              <li><a href="high.html">High</a></li>
+              <li class="active"><a href="inbox.html">Inbox</a></li>
+            </ul>
+          </div>
+        </nav>
+ 
 
         <h1> Adding a Task </h1>
 
@@ -38,6 +52,36 @@
            </div>
         </div>
 
+        <div class="row">
+          <div class="input-field col s12">
+             <select id="assignedby">
+               <option value="" disabled selected>Submitted by:</option>
+               <option value="1">Jesus</option>
+               <option value="2">Willie</option>
+               <option value="3">Sigrunn</option>
+               <option value="4">Caleb</option>
+               <option value="5">Brooke</option>
+             </select>
+             <label>Submitted by</label>
+           </div>
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12">
+             <select id="type">
+               <option value="" disabled selected>Type:</option>
+               <option value="1">Personal</option>
+               <option value="2">School</option>
+               <option value="3">Chore</option>
+               <option value="3">Other</option>
+               </select>
+             <label>Type</label>
+           </div>
+        </div>      
+        <div class="row">
+          <label>Deadline</label>
+          <input type="date" class="datepicker" id="deadline">
+        </div>
         <!-- TODO: add more form controls for entering task data -->
 
         <div class="row">
@@ -49,24 +93,37 @@
 
       <script>
 
-        var root = new Firebase('https://ucdd2-book.firebaseio.com/')
+        var root = new Firebase('https://weekone.firebaseio.com/')
         var taskListRef = root.child('todos/tasks')
 
         $('#submit').click(function(){
           console.log('the submit button is clicked')
 
-          var title = $('#title').val()
+          var title = $('#title').text()
           console.log('the title is', title)
 
           var priority = $('#priority').val()
           console.log('the priority is', priority)
 
+          var deadline = $('#deadline').val()
+
+          var assignedby = $('#assignedby').val()
+
+          var completed = $('#completed').bool()
+
+          var type = $('#type').val()
+
           // TODO: retrieve more fields from form inputs
 
           // TODO: add more fields to taskObject
           var taskObject = {
-            title: title
-          }
+            title: {
+            assignedby: assignedby,
+            completed: completed,
+            deadline: deadline,
+            priority: priority,
+            type: type
+          }}
 
           // TODO: add logic to validate form data before pushing the
           // data to firebase, only push/set if the required fields are not empty
@@ -77,6 +134,10 @@
         })
 
         // IMPORTANT!! initialize materializecss select
+        $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
         $(document).ready(function() {
           $('select').material_select();
         });
