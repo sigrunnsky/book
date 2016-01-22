@@ -96,41 +96,32 @@
         var root = new Firebase('https://weekone.firebaseio.com/')
         var taskListRef = root.child('todos/tasks')
 
-        $('#submit').click(function(){
-          console.log('the submit button is clicked')
-
-          var title = $('#title').text()
-          console.log('the title is', title)
-
-          var priority = $('#priority').val()
-          console.log('the priority is', priority)
-
-          var deadline = $('#deadline').val()
-
+         $('#submit').click(function(){
+          var title = $('#title').val()
           var assignedby = $('#assignedby').val()
-
-          var completed = $('#completed').bool()
-
           var type = $('#type').val()
+          var deadline = $('#deadline').val()
+          var priority = $('#priority').val()
 
-          // TODO: retrieve more fields from form inputs
-
-          // TODO: add more fields to taskObject
+          
           var taskObject = {
-            title: {
+            title: title,
             assignedby: assignedby,
-            completed: completed,
+            type: type,
             deadline: deadline,
             priority: priority,
-            type: type
-          }}
+            completed: false
+          }
 
-          // TODO: add logic to validate form data before pushing the
-          // data to firebase, only push/set if the required fields are not empty
-
-          // TODO: study why push() and set() are both necessary
-          var newTaskRef = taskListRef.push()
-          newTaskRef.set(taskObject)
+          //  logic to validate form data before pushing the data to firebase, only push/set if the required fields are not empty
+          if (title == "" || assignedby == "" || type == "" || deadline == "" || priority == "") {
+            Materialize.toast('Missing Fields!', 2000)
+          }
+          else {
+            var newTaskRef = taskListRef.push()
+            newTaskRef.set(taskObject)
+            Materialize.toast('Task Added!', 1000);            
+          }
         })
 
         // IMPORTANT!! initialize materializecss select
