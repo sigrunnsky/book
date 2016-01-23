@@ -55,27 +55,27 @@
         <div class="row">
           <div class="input-field col s12">
              <select id="assignedby">
-               <option value="" disabled selected>Submitted by:</option>
+               <option value="" disabled selected>Assigned this task to:</option>
                <option value="Jesus">Jesus</option>
                <option value="Willie">Willie</option>
                <option value="Sigrunn">Sigrunn</option>
                <option value="Caleb">Caleb</option>
                <option value="Brooke">Brooke</option>
              </select>
-             <label>Submitted by</label>
+             <label>Assigned To:</label>
            </div>
         </div>
       
         <div class="row">
           <div class="input-field col s12">
              <select id="type">
-               <option value="" disabled selected>Type:</option>
+               <option value="" disabled selected>Type of Task:</option>
                <option value="Personal">Personal</option>
                <option value="School">School</option>
                <option value="Chore">Chore</option>
                <option value="Other">Other</option>
                </select>
-             <label>Type</label>
+             <label>Type:</label>
            </div>
         </div>      
         <div class="row">
@@ -98,7 +98,7 @@
 
          $('#submit').click(function(){
           var title = $('#title').val()
-          var assignedby = $('#assignedby').val()
+          var assigned = $('#assignedby').val()
           var type = $('#type').val()
           var deadline = $('#deadline').val()
           var priority = $('#priority').val()
