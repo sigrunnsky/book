@@ -17,15 +17,27 @@
 
       <div class="container">
 
-        <h1>Sigrunn Sky</h1>
+      <nav>
+        <div class="nav-wrapper">
+         <a href="index.html" class="brand-logo">Sigrunn Sky</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="active"><a href="index.html">Resume and Todos</a></li>
+          <li><a href="subscribe.html">Subscribe</a></li>
+        </ul>
+      </div>
+    </nav>
 
-        <h2>Familiar Programming Languages</h2>
+        <h3>Familiar Programming Languages</h3>
         <ul class="collection" id="programming">
         </ul>
 
 
-        <h2>Hobbies</h2>
+        <h3>Hobbies</h3>
         <ul class="collection" id="Hobbies">
+        </ul>
+
+        <h3>Tasks</h3>
+        <ul class="collection" id="tasks">
         </ul>
 
       </div>
@@ -50,7 +62,20 @@
           })
         })
 
-      var ref = new Firebase('https://sigrunnsky.firebaseio.com/')
+      
+        //group firebase
+      var ref = new Firebase('https://weekone.firebaseio.com/')
+    
+     // Callback function - triggered when completion switch toggled
+        function completedCallback(key) {
+          var callbackKey = '#' + key
+          var completedVal = $(callbackKey).prop('checked')
+          Materialize.toast('Task Updated', 1000);
+          ref.child('todos/tasks').child(key).update({
+           completed: completedVal
+          });
+        }
+       
       ref.child('todos/tasks').on('value', function(snapshot){
           $('#tasks').empty()
           var tasks = snapshot
@@ -65,11 +90,28 @@
             var type = task.child("type").val();
             var completed = task.child("completed").val();
 
+             // Display checkbox according to state of completion
+          if (completed == true) {
+              // use variable id to uniquely differentiate each checkbox
+            var checkboxPosition = '<input checked type="checkbox" onClick="completedCallback(\'' + key + '\')" id=' + key + '>';
+          }
+          else {
+            var checkboxPosition = '<input type="checkbox" onClick="completedCallback(\'' + key + '\')" id=' + key + '>';
+          }
+            // Selct Color based on Priority
+            var cardColor = '<div class="card blue-grey">'
+             if (priority == 'medium') {
+               cardColor = '<div class="card blue-grey darken-2">'
+             }
+             if (priority == 'high') {
+               cardColor = '<div class="card blue-grey darken-4">'
+             }
 
-      if(assigned =='Sigrunn'){
-            $('#tasks').append('<div class="row">' + '<div class="col s12 m6">' + '<div class="card blue-grey darken-1">' + '<div class="card-content white-text">' + '<span class="card-title">' + title + '</span>' + '<p>' + "Priority: " + priority + '<br>' + "Deadline: " + deadline + '<br>' + "Type: " + type + '<br>' + "Assigned By: " + assigned + '<br>' + "Completed: " + "<div class=\"switch\">" + '<label>' + 'No' + checkboxPosition + '<span class="lever"></span>' + "Yes" + '</label> '+ '</div>' + '</p>' + '</div>' + '</div>' + '</div>' + '</div>')
+      if(assigned == 'Sigrunn'){
+         $('#tasks').append('<div class="row">' + '<div class="col s12 m6">' + '<div class="card blue-grey darken-1">' + '<div class="card-content white-text">' + '<span class="card-title">' + title + '</span>' + '<p>' + "Priority: " + priority + '<br>' + "Deadline: " + deadline + '<br>' + "Type: " + type + '<br>' + "Assigned To: " + assigned + '<br>' + "Completed: " + "<div class=\"switch\">" + '<label>' + 'No' + checkboxPosition + '<span class="lever"></span>' + "Yes" + '</label> '+ '</div>' + '</p>' + '</div>' + '</div>' + '</div>' + '</div>')
             }
-            )}
+          })
+        })
       </script>
     </body>
   </html>
