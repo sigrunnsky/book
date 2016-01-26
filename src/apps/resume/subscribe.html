@@ -17,7 +17,15 @@
 
       <div class="container">
 
-        <h1> Subscribe </h1>
+        <nav>
+         <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo"> Sigrunn Sky</a>
+           <ul id="nav-mobile" class="right hide-on-med-and-down">
+           <li><a href="index.html">Resume and Todos</a></li>
+           <li class="active"><a href="subscribe.html">Subscribe</a></li>
+          </ul>
+        </div>
+      </nav>
 
         <div class="row">
           <div class="input-field col s12">
@@ -40,19 +48,41 @@
       </div>
 
       <script>
+        var ref = new Firebase('https://sigrunnsky.firebaseio.com/')
+        var taskListRef = ref.child('Subscribers')
 
-        $('#submit').click(function(){
-          console.log('the submit button is clicked')
+        // read data from the location todos/tasks, only once 
 
-          // TODO: add code to submit an email address to your own Firebase
+           $('#submit').click(function(){
+          var email = $('#email').val()
+          
+          var taskObject = {
+            email: email
+          }
 
+          //  logic to validate form data before pushing the data to firebase, only push/set if the required fields are not empty
+          if (email == "") {
+            Materialize.toast('Please fill out an email!', 2000)
+          }
+          else {
+            var newTaskRef = taskListRef.push()
+            newTaskRef.set(taskObject)
+            Materialize.toast('You are now Subscribed!', 1000); 
+          }     
+          })
+         ref.child('Subscribers').on('value', function(snapshot){
+          $('#emails').empty()
+          snapshot.forEach(function(Subscribers){
+            var key = Subscribers.key();
+            var email = Subscribers.child("email").val();
+
+          $('#emails').append(
+                '<div class="col s12 m6">' +
+                  '<div class="card-content black-text">' + 
+                    '<span class="card-title">' + email + '</span>' + 
+                  '</div>')      
+         })
         })
-
-
-        // TODO: add code to pull emaill addresses from your own Firebase,
-        // and populate "#emails" with these email addresses
-
-
       </script>
     </body>
   </html>

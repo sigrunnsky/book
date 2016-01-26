@@ -16,6 +16,20 @@
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
       <div class="container">
+        <h>My Team's ToDos App</h>
+        <nav>
+              <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo">Rice and Curry ToDo</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="low.html">Low</a></li>
+              <li><a href="medium.html">Medium</a></li>
+              <li><a href="high.html">High</a></li>
+              <li class="active"><a href="inbox.html">Inbox</a></li>
+            </ul>
+          </div>
+        </nav>
+ 
 
         <h1> Adding a Task </h1>
 
@@ -30,14 +44,44 @@
           <div class="input-field col s12">
              <select id="priority">
                <option value="" disabled selected>Choose Priority</option>
-               <option value="1">High</option>
-               <option value="2">Medium</option>
-               <option value="3">Low</option>
+               <option value="High">High</option>
+               <option value="Medium">Medium</option>
+               <option value="Low">Low</option>
              </select>
              <label>Priority</label>
            </div>
         </div>
 
+        <div class="row">
+          <div class="input-field col s12">
+             <select id="assignedby">
+               <option value="" disabled selected>Assigned this task to:</option>
+               <option value="Jesus">Jesus</option>
+               <option value="Willie">Willie</option>
+               <option value="Sigrunn">Sigrunn</option>
+               <option value="Caleb">Caleb</option>
+               <option value="Brooke">Brooke</option>
+             </select>
+             <label>Assigned To:</label>
+           </div>
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12">
+             <select id="type">
+               <option value="" disabled selected>Type of Task:</option>
+               <option value="Personal">Personal</option>
+               <option value="School">School</option>
+               <option value="Chore">Chore</option>
+               <option value="Other">Other</option>
+               </select>
+             <label>Type:</label>
+           </div>
+        </div>      
+        <div class="row">
+          <label>Deadline</label>
+          <input type="date" class="datepicker" id="deadline">
+        </div>
         <!-- TODO: add more form controls for entering task data -->
 
         <div class="row">
@@ -49,34 +93,42 @@
 
       <script>
 
-        var root = new Firebase('https://ucdd2-book.firebaseio.com/')
+        var root = new Firebase('https://weekone.firebaseio.com/')
         var taskListRef = root.child('todos/tasks')
 
-        $('#submit').click(function(){
-          console.log('the submit button is clicked')
-
+         $('#submit').click(function(){
           var title = $('#title').val()
-          console.log('the title is', title)
-
+          var assigned = $('#assignedby').val()
+          var type = $('#type').val()
+          var deadline = $('#deadline').val()
           var priority = $('#priority').val()
-          console.log('the priority is', priority)
 
-          // TODO: retrieve more fields from form inputs
-
-          // TODO: add more fields to taskObject
+          
           var taskObject = {
-            title: title
+            title: title,
+            assignedby: assignedby,
+            type: type,
+            deadline: deadline,
+            priority: priority,
+            completed: false
           }
 
-          // TODO: add logic to validate form data before pushing the
-          // data to firebase, only push/set if the required fields are not empty
-
-          // TODO: study why push() and set() are both necessary
-          var newTaskRef = taskListRef.push()
-          newTaskRef.set(taskObject)
+          //  logic to validate form data before pushing the data to firebase, only push/set if the required fields are not empty
+          if (title == "" || assignedby == "" || type == "" || deadline == "" || priority == "") {
+            Materialize.toast('Missing Fields!', 2000)
+          }
+          else {
+            var newTaskRef = taskListRef.push()
+            newTaskRef.set(taskObject)
+            Materialize.toast('Task Added!', 1000);            
+          }
         })
 
         // IMPORTANT!! initialize materializecss select
+        $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
         $(document).ready(function() {
           $('select').material_select();
         });
