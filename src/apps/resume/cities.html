@@ -25,7 +25,7 @@
       <div class="container">
 
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #e3f2fd blue lighten-4">
            <a href="index.html" class="brand-logo">My Favorite Cities</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.html">Resume</a></li>
@@ -36,7 +36,7 @@
       </nav>
         
         <div id="map" style="height:500px"></div>
-        <div id="cities" class="collapsible" data-collapsible="accordion"></div>
+        <div id="cities" class="collapsible" data-collapsible="accordion" style="list-style-type:none" ></div>
       </div>
       <script>
 
@@ -99,33 +99,32 @@ function mapCity(city, name){
   console.log('mapCity', name)
   var farge;
   markersLayerGroup.addTo(map)
-  if (city.currently.temperature < 50) {
+
+  if (city.currently.temperature < 30) {
     var farge = 'blue'; 
   }
-  else if (city.currently.temperature > 70) {
-    var farge = 'red';
-  }
-  else {
+  else if (city.currently.temperature >= 30 && city.currently.temperature < 50) {
     var farge = 'green';
   }
-
+  else if (city.currently.temperature >= 50 && city.currently.temperature < 70) {
+    var farge = 'yellow';
+  }
+  else {
+    var farge = 'red';
+  }
   var latlng = [city.latitude, city.longitude]
-  var circle = L.circle(latlng, 10, {
+  var circle = L.circle(latlng, 200, {
       color: farge,
       fillColor: farge,
       fillOpacity: 0.5
-  }).bindLabel(name)
+  }).bindLabel('<h4>' + name +'</h4>')
+
   markersLayerGroup.addLayer(circle)
-}
+}//JSON.stringify(city.currently) 
 function displayCity(city, name){
-  console.log('displayCity', city)
-  $('#cities').append('<li>' + '<div class="collapsible-header">' +'<h4>' + name +'</h4>' + '</div>' + '<div class="collapsible-body">'+
-    'Temperature: ' + city.currently.temperature + "<br>" + 'Real Feel: ' + city.currently.apparentTemperature + "<br>" + 'Summary: ' + city.currently.summary + "<br>" + 'Wind Speed: ' + city.currently.windSpeed + 'Humidity: ' + city.currently.humidity + "<br>" +
-    JSON.stringify(city.currently) + '<br>' + '</li>' + '</div>')
+
+  $('#cities').append('<li>' + '<div class="collapsible-header #e3f2fd blue lighten-5">' +'<h4>' + name +'</h4>' + '</div>' + '<div class="collapsible-body">' +'<b>'+ ' Temperature: ' +'</b>'+ city.currently.temperature + ' °F' + "<br>" + '<b>'+' Real Feel: '+'</b>'+ city.currently.apparentTemperature  +' °F' + "<br>" + '<b>'+' Summary: '+'</b>' + city.currently.summary + "<br>" +'<b>'+ ' Wind Speed: ' +'</b>'+ city.currently.windSpeed + "<br>" +'<b>'+ ' Chance of Precipitation: ' +'</b>'+ (city.currently.precipProbability*100)+ '%' + "<br>" +'<b>'+ ' Humidity: ' +'</b>'+ city.currently.humidity*100 + '%' + "<br>" + '<b>'+ ' Percent Cloud Cover: ' +'</b>'+ (city.currently.cloudCover*100)+ '%' + '</li>' + '</div>')
 }
-
-
-
 
       </script>
     </body>
