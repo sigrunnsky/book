@@ -17,15 +17,23 @@ create, play, build, fix, help, control ... etc
 
 ## Ideation
 
-* What is the name of your app?
+* What is the name of your app? 
+Packathon
 * What collaborative activity can people do together using your app?
+App where people can collaboritivly pack for group trips.
 * What is the ideal number of concurrent users (must be at least 10 but no more than 40)?
+20 people
 * What skills do people need in order to do this activity?
+They must know how to use a simple web app.
 * Is this activity for fun or for something practical?
+Practical. 
 * How can a person see what everyone else is doing?
+There will be a personal packing list for each member of the group and a group packing 
+list for communal things. Both of these will be visible to each member unless they choose to make it private. 
 * How can a person see the most recent result of everyone's collaborative effort?
+The packing lists will update realtime. 
 * What can an admin see (i.e., God's mode)?
-
+An admin sees what groups there are, and all of the group's settings. 
 ## Mockup
 
 Create a high-fidelity mockup of your app. The mockup should contain any
