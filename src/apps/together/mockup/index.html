@@ -1,20 +1,72 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
     <head>
       <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
     <body>
-      <div>Links to the pages of your app's mockup</div>
-      <div><h1>Packathon</h1></div>
-      <a class="waves-effect waves-light btn"><i class="material-icons left">work</i>button</a>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
+      <div class="container">
+
+      <nav>
+        <div class="nav-wrapper black">
+         <a href="index.html" class="brand-logo">Packathon</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="active"><a href="index.html">About</a></li>
+          <li><a href="packathonmockup.html">Packathon</a></li>
+        </ul>
+      </div>
+    </nav>
+
+      <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>What collaborative activity can people do together using your app?</div>
+      <div class="collapsible-body"><p>App where people can collaboritivly pack for group trips/events. This could include camping trips, potlucks, picnics, and weekends spent in the mountains. </p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>What is the ideal number of concurrent users (must be at least 10 but no more than 40)?</div>
+      <div class="collapsible-body"><p>11 people</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>What skills do people need in order to do this activity?</div>
+      <div class="collapsible-body"><p>They must know how to use a simple web app.</p></div>
+      <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>Is this activity for fun or for something practical?</div>
+      <div class="collapsible-body"><p>Practical way to plan fun things with other people. So both?</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>How can a person see what everyone else is doing?</div>
+      <div class="collapsible-body"><p>There will be a personal packing list for each member of the group and a group packing list for communal things. Both of these will be visible to each member unless they choose to make it private. For a trip with friends, a married couple might choose to create a collaborative packing list that is private, while the trip leader may make a communal packing list where everyone can contribute. </p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>How can a person see the most recent result of everyone's collaborative effort?</div>
+      <div class="collapsible-body"><p>The packing list(s) will update realtime. </p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">work</i>What can an admin see (i.e., God's mode)??</div>
+      <div class="collapsible-body"><p>An admin sees what groups there are, and all of the group's settings.  </p></div>
+    </li>
+  </ul>
+
+    <div class= "center">
+      <button class="waves-effect black waves-light btn"><a href="packathonmockup.html"><i class="material-icons left">work</i>Go to Packathon App!</button> </a>
+    </div>
+</div>
+      <script type="jQuery">
+       $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });</script>
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
