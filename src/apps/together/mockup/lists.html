@@ -24,29 +24,28 @@
           <li><a href="index.html">About</a></li>
           <li class="active"><a href="packathonmockup.html">Packathon</a></li>
           <li><a href="lists.html"><i class="material-icons">list</i></a></li>
-          <li><a href="sass.html"><i class="material-icons">playlist_add</i></a></li>
-
-
+          <li><a class="modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li>
         </ul>
       </div>
     </nav>
+    <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
 
 </div>
-      <script type="jQuery">
-        $(document).ready(function() {
-    $('input#input_text, textarea#textarea1').characterCounter();
+      <script>
+      $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
   });
-
-
-
-
-
-
       </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
   </html>

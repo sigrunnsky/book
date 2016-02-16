@@ -22,31 +22,147 @@
          <a href="index.html" class="brand-logo">Packathon</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">About</a></li>
-          <li class="active"><a href="packathonmockup.html">Packathon</a></li>
-          <li><a href="lists.html"><i class="material-icons">list</i></a></li>
-          <li><a href="sass.html"><i class="material-icons">playlist_add</i></a></li>
-
-
+          <li c;ass-"active"><a href="packathonmockup.html"><i class="material-icons">list</i></a></li>
+          <li><a class="modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li>
         </ul>
       </div>
     </nav>
 
+    <div class="row">
+      <div class="col s12 m7">
+        <div class="card-panel black">
+          <span class="white-text">
+            <span class="card-title"><h5>Potluck at Joannes!</h5></span>
+              Date: February 23, 2016
+            <p>
+             <input type="checkbox" class="filled-in" id="item1" />
+              <label for="item1">veggie burgers</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item2" checked="checked" />
+              <label for="item2">Potato Salad</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item3" />
+              <label for="item3">Charcoal</label>
+               <p>
+             <input type="checkbox" class="filled-in" id="item4" checked="checked" />
+              <label for="item4">burger buns</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item5"  />
+              <label for="item5">angus burgers</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item6" checked="checked" />
+              <label for="item6">cheese</label>
+            </p>
+             <p>
+             <input type="checkbox" class="filled-in" id="item7"/>
+              <label for="item7">fruit</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item8"/>
+              <label for="item8">condiments</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="item9"/>
+              <label for="item9">spatula</label>
+            </p>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m7">
+        <div class="card-panel black">
+          <span class="white-text">
+            <span class="card-title"><h5>Spain</h5></span>
+              Date: April 1, 2016
+            <p>
+             <input type="checkbox" class="filled-in" id="2item1" checked="checked" />
+              <label for="2item1">Swim Suit</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="2item2" />
+              <label for="2item2">Sunglasses</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="2item3" />
+              <label for="2item3">shorts x3</label>
+            </p>
+             <p>
+             <input type="checkbox" class="filled-in" id="2item4" checked="checked" />
+              <label for="2item4">tank top</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="2item5" />
+              <label for="2item5">hiking shoes</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="2item6" checked="checked" />
+              <label for="2item6">kindle</label>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+
+   
+    <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Creat a New Packing List</h4>
+      
+        <div class="row">
+    <div class="input-field col s6">
+      <input id="title" type="text">
+      <label class="active" for="title">List Title: </label>
+    </div>
+  </div>
+
+        <div class="row">
+          <label>Travel Date</label>
+          <input type="date" class="datepicker" id="date">
+        </div>
+        
+
+        <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">What to bring?</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+      
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    </div>
+  </div>
+
 
 </div>
-      <script type="jQuery">
-        $(document).ready(function() {
-    $('input#input_text, textarea#textarea1').characterCounter();
+      <script>
+      $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
+
+      $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
   });
-
-
-
-
-
-
       </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
   </html>
