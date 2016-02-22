@@ -22,12 +22,19 @@
          <a href="index.html" class="brand-logo">Packathon</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">About</a></li>
-          <li c;ass-"active"><a href="packathonmockup.html"><i class="material-icons">list</i></a></li>
+          <li class-"active"><a href="packathonmockup.html"><a class='dropdown-button' data-activates='dropdown1'><i class="material-icons">list</i></a></a></li>
           <li><a class="modal-trigger" href="#modal1"><i class="material-icons">playlist_add</i></a></li>
         </ul>
       </div>
     </nav>
 
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#potluck">Potluck at Joannes!</a></li>
+    <li><a href="#spain">Spain</a></li>
+  </ul>
+  
+  <div id="potluck">
     <div class="row">
       <div class="col s12 m7">
         <div class="card-panel black">
@@ -74,7 +81,10 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="hide">
+  <div id="spain">
     <div class="row">
       <div class="col s12 m7">
         <div class="card-panel black">
@@ -109,7 +119,8 @@
         </div>
       </div>
     </div>
-
+  </div>
+  </div>
    
     <!-- Modal Structure -->
   <div id="modal1" class="modal">
@@ -139,11 +150,6 @@
       </div>
     </form>
   </div>
-
-
-
-
-
       
     </div>
     <div class="modal-footer">
@@ -151,9 +157,19 @@
     </div>
   </div>
 
-
 </div>
       <script>
+        $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
       $('.datepicker').pickadate({
           selectMonths: true, // Creates a dropdown to control month
           selectYears: 15 // Creates a dropdown of 15 years to control year
