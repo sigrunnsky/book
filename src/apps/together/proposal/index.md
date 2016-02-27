@@ -5,6 +5,7 @@ layout: layout.hbs
 # Proposal
 
 ## Team Members
+Juan Carlos Herrera, Russel Mehring, Sigrunn Sky, Ahmed Almutawa
 
 (TODO: Names)
 
