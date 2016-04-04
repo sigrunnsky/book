@@ -2,27 +2,8 @@
 layout: layout.hbs
 ---
 
-# Data Models
+# Revision
+I didn't have to update the model besides changing a few fixed-width settings to relative ones. As for what the user's can see live, they should be able to see the changes in the polls on the chart live as well as the number of active users.
 
-My plan is to have the data in firebase structured like this:
-	
-	packathon
-		packinglist1
-			items
-				item1
-				item2
-				item3
-				item4
-				item5
-				item6
-			users
-				name1
-					admin:false
-				name2
-					admin:false		
-				name3
-					admin:false
-				name5
-					admin:true
-			status:
-				private: false
+# Data Models
+Votes: { userId: string; vote: int; }
